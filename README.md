@@ -51,6 +51,7 @@ http://www.springframework.org/schema/rpcClient/spring-rpcClient.xsd
 在serviceImpl中写上@RPCServer 认为该类是一个服务
 @Service
 @RPCServer
+
 public class serverWorld2 {
 	public String message(String world){
 		return "Hello world";
@@ -60,6 +61,7 @@ public class serverWorld2 {
 5.客户端
 写一个service写上@RPCClient 认为其实一个消费接口 主要不要再改类上面添加@Service等注解 因为有自己写的方法注入bean
 @RPCClient
+
 public interface clientWorld {
 	@RPCURL(className="serverWorld2",methodName="message") 
 	public List message(String world);
