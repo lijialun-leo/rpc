@@ -105,12 +105,6 @@
       <version>1.2</version>
     </dependency>
   </dependencies>
-  <repositories>
-    <repository>
-      <id>nexus-datanew</id>
-      <url>http://172.16.12.213:19999/nexus/content/groups/public/</url>
-    </repository>
-  </repositories>
   <build>
     <resources>
       <resource>
@@ -122,42 +116,5 @@
       </resource>
     </resources>
     <finalName>service</finalName>
-    <plugins>
-      <plugin>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>2.3</version>
-        <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-          <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.tomcat.maven</groupId>
-        <artifactId>tomcat7-maven-plugin</artifactId>
-        <version>2.1</version>
-        <configuration>
-          <port>8888</port>
-          <uriEncoding>UTF-8</uriEncoding>
-          <server>tomcat7</server>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.mortbay.jetty</groupId>
-        <artifactId>maven-jetty-plugin</artifactId>
-        <version>6.1.26</version>
-        <configuration>
-          <connectors>
-            <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-              <port>8888</port>
-            </connector>
-          </connectors>
-          <scanIntervalSeconds>1</scanIntervalSeconds>
-          <webAppConfig>
-          <defaultsDescriptor>src/main/resources/jetty-context.xml</defaultsDescriptor>
-          </webAppConfig>
-        </configuration>
-      </plugin>
-    </plugins>
   </build>
 </project>
