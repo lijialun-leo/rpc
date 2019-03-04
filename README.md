@@ -1,5 +1,5 @@
 # rpc
-自己设计一个轻量级的RPC框架
+自己设计一个的轻量级的RPC框架
 
 ## 1.将\target 下的service.jar引入自己的项目中
 如果是maven 可以将其放入自己的maven仓库或者本地之间引入
