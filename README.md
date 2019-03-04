@@ -1,9 +1,9 @@
 # rpc
 自己设计一个轻量级的RPC框架
 
-1.将\target 下的service.jar 引入自己的项目中
-如果是maven 可以将其放入自己的maven仓库
-或者本地之间引入
+## 1.将\target 下的service.jar引入自己的项目中
+如果是maven 可以将其放入自己的maven仓库或者本地之间引入
+```
 <dependency>
 	    <groupId>service</groupId>
 	    <artifactId>service</artifactId>
@@ -11,16 +11,16 @@
 	    <scope>system</scope>
 	    <systemPath>D:\service.jar</systemPath>
 </dependency>
+```
+## 2.引入jar包
+--- 本jar需要用到netty zookeeper jackson Spring等可以从该项项目的pom.xml中copy
 
-2.本jar需要用到netty zookeeper jackson Spring等可以从该项项目的pom.xml中copy
-
-3.编写一个sping-rpc.xml 文件
+## 3.编写一个sping-rpc.xml 文件
 注意头文件需要引入 xmlns:rpcClient="http://www.springframework.org/schema/rpcClient" 
 http://www.springframework.org/schema/rpcClient
 http://www.springframework.org/schema/rpcClient/spring-rpcClient.xsd
 这个是自己定义的标签
-
-
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
@@ -46,28 +46,29 @@ http://www.springframework.org/schema/rpcClient/spring-rpcClient.xsd
 		<property name="port" value="8885"></property>
 	</bean>
 </beans>
-
-4.服务端
+```
+## 4.服务端
 在serviceImpl中写上@RPCServer 认为该类是一个服务
+```
 @Service
 @RPCServer
-
 public class serverWorld2 {
 	public String message(String world){
 		return "Hello world";
 	} 
 }
-
-5.客户端
+```
+## 5.客户端<br>
 写一个service写上@RPCClient 认为其实一个消费接口 主要不要再改类上面添加@Service等注解 因为有自己写的方法注入bean
+```
 @RPCClient
-
 public interface clientWorld {
 	@RPCURL(className="serverWorld2",methodName="message") 
 	public List message(String world);
 }
-
-最后就像调用实现类一样在controller中调用
+```
+最后就像调用实现类一样在controller中调用<br>
+```
 @Controller
 @RequestMapping("/clientWorld")
 public class clientWorldController {
@@ -82,11 +83,11 @@ public class clientWorldController {
 	}
 
 }
+```
+## 6、启动zookeeper服务 在配置文件中配好ip和port
 
-6、启动zookeeper服务 在配置文件中配好ip和port
+## 7.启动项目即可
 
-7.启动项目即可
-
-未完成
-1.zookeeper的集群
-2.负载均衡 目前只有轮询
+# 未完成
+## 1.zookeeper的集群
+## 2.负载均衡 目前只有轮询
