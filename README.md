@@ -13,7 +13,7 @@
 </dependency>
 ```
 ## 2.引入jar包
---- 本jar需要用到netty zookeeper jackson Spring等可以从该项项目的pom.xml中copy
+本jar需要用到netty zookeeper jackson Spring等可以从该项项目的pom.xml中copy
 
 ## 3.编写一个sping-rpc.xml 文件
 注意头文件需要引入 xmlns:rpcClient="http://www.springframework.org/schema/rpcClient" 
@@ -84,7 +84,7 @@ public class clientWorldController {
 
 }
 ```
-## 6、启动zookeeper服务 在配置文件中配好ip和port
+## 6.启动zookeeper服务 在配置文件中配好ip和port
 
 ## 7.启动项目即可
 
