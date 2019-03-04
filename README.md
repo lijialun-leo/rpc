@@ -16,9 +16,10 @@
 本jar需要用到netty zookeeper jackson Spring等可以从该项项目的pom.xml中copy
 
 ## 3.编写一个sping-rpc.xml 文件
-注意头文件需要引入 xmlns:rpcClient="http://www.springframework.org/schema/rpcClient" 
-http://www.springframework.org/schema/rpcClient
-http://www.springframework.org/schema/rpcClient/spring-rpcClient.xsd
+注意头文件需要引入 <br>
+xmlns:rpcClient="http://www.springframework.org/schema/rpcClient" <br>
+http://www.springframework.org/schema/rpcClient<br>
+http://www.springframework.org/schema/rpcClient/spring-rpcClient.xsd<br>
 这个是自己定义的标签
 ```
 <?xml version="1.0" encoding="UTF-8"?>
