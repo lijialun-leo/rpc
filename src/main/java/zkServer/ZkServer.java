@@ -9,6 +9,8 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import main.java.annotation.RPCServer;
 import main.java.core.RPC;
@@ -19,7 +21,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 public class ZkServer implements ApplicationContextAware{
-	
+	public static ConcurrentHashMap<String, ConcurrentHashMap<String,CopyOnWriteArrayList<String>>> serviceMap = new ConcurrentHashMap<String,ConcurrentHashMap<String,CopyOnWriteArrayList<String>>>();
 	public static Map<String, String> map = new HashMap<String, String>();
 	public static ApplicationContext serverContext;
 	public static String ZookeeperIpHost;
@@ -30,7 +32,7 @@ public class ZkServer implements ApplicationContextAware{
 		try {
 			//连接zk
 			ZookeeperBase zk = new ZookeeperBase(ZookeeperIpHost);
-			//创建节点
+			//创建节点 获取当前项目路径
 			Enumeration<URL> urls =Thread.currentThread().getContextClassLoader().getResources(baseackage.replace(".", "/"));
 			while (urls.hasMoreElements()){
                 URL url =  urls.nextElement();
@@ -78,6 +80,7 @@ public class ZkServer implements ApplicationContextAware{
 		}
 	}
 
+	
 	private static void func(File file,String packageName){
 		File[] fs = file.listFiles();
 		if(fs.length != 0){
@@ -106,12 +109,6 @@ public class ZkServer implements ApplicationContextAware{
 			}
 		}
 	}
-	
-    //运行过程中获取IOC容器
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        serverContext=applicationContext;
-    }
     
     public void deleteNode(){
     	try {
@@ -132,22 +129,27 @@ public class ZkServer implements ApplicationContextAware{
 			e.printStackTrace();
 		}
     }
+    
+    //运行过程中获取IOC容器
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+    	serverContext=applicationContext;
+    }
 
-	public String getZookeeperIpHost() {
+    public String getZookeeperIpHost() {
 		return ZookeeperIpHost;
 	}
-
+	
 	public void setZookeeperIpHost(String zookeeperIpHost) {
 		ZookeeperIpHost = zookeeperIpHost;
 	}
-
+	
 	public String getBaseackage() {
 		return baseackage;
 	}
-
+	
 	public void setBaseackage(String baseackage) {
 		this.baseackage = baseackage;
 	}
-    
     
 }

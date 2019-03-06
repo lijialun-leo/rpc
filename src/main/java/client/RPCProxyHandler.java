@@ -4,10 +4,12 @@ package main.java.client;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 
 import main.java.annotation.RPCURL;
@@ -21,22 +23,27 @@ public class RPCProxyHandler<T> implements InvocationHandler {
 	
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-    	ZookeeperBase zk = new ZookeeperBase(ZkServer.ZookeeperIpHost);
         RPCRequest request=new RPCRequest();
         request.setRequestID(buildRequestID(method.getName()));
         //获取调用方法的ClassName和MethodName
         RPCURL url = method.getAnnotation(RPCURL.class);
-        String className = zk.getData("/RPCSERVER/"+url.className());
-        List<String> serverList = zk.getChilds("/RPCSERVER/"+url.className());
-        String ipAndHost = RoundRobin.getServer(serverList);//后期需要添加负载均衡策略(已有轮询)
-        String str[] = ipAndHost.split(":");
-        request.setClassName(className);
-        request.setMethodName(url.methodName());
-        request.setParameters(args);
-        requestLockMap.put(request.getRequestID(),request);
-        RPCRequestNet.connect(str[0], Integer.parseInt(str[1])).send(request);
-        requestLockMap.remove(request.getRequestID());
-        return request.getResult();
+        Map serverMap = ZkServer.serviceMap.get(url.className());
+        Iterator<Map.Entry<String, List<String>>> it = serverMap.entrySet().iterator();
+        while (it.hasNext()) {
+             Map.Entry<String, List<String>> entry = it.next();
+             String className = entry.getKey();
+             List<String> serverList = entry.getValue();
+             String ipAndHost = RoundRobin.getServer(serverList);//后期需要添加负载均衡策略(已有轮询)
+             String str[] = ipAndHost.split(":");
+             request.setClassName(className);
+             request.setMethodName(url.methodName());
+             request.setParameters(args);
+             requestLockMap.put(request.getRequestID(),request);
+             RPCRequestNet.connect(str[0], Integer.parseInt(str[1])).send(request);
+             requestLockMap.remove(request.getRequestID());
+             return request.getResult();
+        }
+        return "找不到服务";
     }
 
     //生成请求的唯一ID

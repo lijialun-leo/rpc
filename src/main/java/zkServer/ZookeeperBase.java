@@ -1,20 +1,29 @@
 package main.java.zkServer;
  
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
 
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.Watcher.Event.KeeperState;
+import org.apache.zookeeper.Watcher.Event.EventType;
 import org.apache.zookeeper.ZooDefs.Ids;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
  
 public class ZookeeperBase implements Watcher {
- 
+	
 	private static final int SESSION_TIME_OUT = 2000;
 	private static final String basePath = "/request";
 	private CountDownLatch countDownLatch = new CountDownLatch(1);
@@ -22,9 +31,117 @@ public class ZookeeperBase implements Watcher {
 	
 	@Override
 	public void process(WatchedEvent event) {
-		if(event.getState()==KeeperState.SyncConnected){
+		// 事件类型
+        EventType eventType = event.getType();
+        // 受影响的path
+        String path = event.getPath();
+		if(EventType.None == eventType){
 			System.out.println("连接成功");
+			//初始化服务列表 
+			try {
+				intiServerMap("/RPCSERVER");
+			} catch (KeeperException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			countDownLatch.countDown();
+		}/*else if(EventType.NodeCreated == eventType){//监听到传教节点
+			String paths[] = path.split("/");
+			Map<String,List<Map<String,String>>> childMap = new HashMap<String, List<Map<String,String>>>();
+			List<Map<String,String>> childList = new ArrayList<Map<String,String>>();
+			if(paths.length == 5){
+				childMap = ZkServer.serviceMap.get(paths[3]);
+				try {
+					childList = childMap.get(new String(getData("/"+paths[2]+"/"+paths[3])));
+					Map<String,String> map = new HashMap<String, String>();
+					map.put(paths[4], new String(getData("/"+paths[2]+"/"+paths[3]+"/"+paths[4])));
+					childList.add(map);
+					System.out.println("服务上线"+path);
+				} catch (KeeperException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}else{
+				try {
+					childMap.put(new String(getData("/"+paths[2]+"/"+paths[3])), childList);
+					ZkServer.serviceMap.put(paths[3], childMap);
+				} catch (KeeperException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+		}else if(EventType.NodeDeleted == eventType){
+			String paths[] = path.split("/");
+			Map<String,List<Map<String,String>>> childMap = ZkServer.serviceMap.get(paths[3]);
+			try {
+				List<Map<String,String>> childList = childMap.get(new String(getData("/"+paths[2]+"/"+paths[3])));
+				Iterator<Map<String,String>> iterator = childList.iterator();
+				while (iterator.hasNext()) {
+					Map<String,String> map = (Map<String,String>) iterator.next();
+					if(map.containsKey(paths[4])){
+						childList.remove(map);
+						System.out.println("服务下线"+path);
+					}
+				}
+			} catch (KeeperException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}*/else if(EventType.NodeChildrenChanged == eventType){//某节点的其子节点有变化
+			String paths[] = path.split("/");
+			ConcurrentHashMap<String,CopyOnWriteArrayList<String>> Map = ZkServer.serviceMap.get(paths[3]);
+			try {
+				//目前列表中数据
+				CopyOnWriteArrayList<String> childList = Map.get(new String(getData("/"+paths[2]+"/"+paths[3])));
+				//节点数据
+				List<String> childrens = getChilds("/"+paths[2]+"/"+paths[3]);
+				//上线处理
+				if(childrens.size() !=0){
+					for (String child : childrens) {
+						if(!childList.contains(child)){
+							childList.add(child);
+							System.out.println("服务上线"+path+"/"+child);
+						}
+						
+					}
+				}
+				//下线处理
+				if(childList.size() != 0){
+					for (String str : childList) {
+						if(childrens.size() !=0){
+							for (String child : childrens) {
+								if(!child.equals(str)){
+									childList.remove(str);
+									System.out.println("服务下线"+path+"/"+child);
+								}
+							}
+						}else{
+							childList.remove(str);
+							System.out.println("服务下线"+path);
+						}
+					}
+				}
+			} catch (KeeperException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
  
@@ -47,7 +164,7 @@ public class ZookeeperBase implements Watcher {
 	//node是否存在
 	public Boolean nodeExists(String path) throws KeeperException, InterruptedException{
 		path = this.pathChange(path);
-		Stat stat = this.zookeeper.exists(path, false);
+		Stat stat = this.zookeeper.exists(path, true);
 		return stat == null ? false : true;
 	}
 	//创建临时node
@@ -120,7 +237,7 @@ public class ZookeeperBase implements Watcher {
 	public List<String> getChilds(String path) throws KeeperException, InterruptedException{
 		path = this.pathChange(path);
 		if(this.nodeExists(path)){
-			return this.zookeeper.getChildren(path, false);
+			return this.zookeeper.getChildren(path, true);
 		}else{
 			return null;
 		}
@@ -140,7 +257,7 @@ public class ZookeeperBase implements Watcher {
 			zookeeper.close();
 		}
 	}
-	
+	//删除节点
 	public void rmr(String path) throws Exception {
         //获取路径下的节点
 		path = this.pathChange(path);
@@ -163,4 +280,32 @@ public class ZookeeperBase implements Watcher {
             System.out.println("被删除的节点为：" + path);
         }
     }
+	
+	//初始化服务列表
+	public  void intiServerMap(String path) throws KeeperException, InterruptedException{
+        List<String> children = getChilds(path);
+        if(children.size() !=0){
+        	for (String pathCd : children) {
+        		ConcurrentHashMap<String,CopyOnWriteArrayList<String>> parentMap = new ConcurrentHashMap<String, CopyOnWriteArrayList<String>>();
+        		CopyOnWriteArrayList<String> childList = new CopyOnWriteArrayList<String>();
+        		List<String> childrens = getChilds(path+"/"+pathCd);
+        		String parentContext =  new String(getData(path+"/"+pathCd));
+        		if(childrens.size() !=0){
+        			for (String child : childrens) {
+        				childList.add(child);
+        			}
+        		}
+        		parentMap.put(parentContext, childList);
+        		ZkServer.serviceMap.put(pathCd, parentMap);
+        	}
+        }
+        
+        ObjectMapper objectMapper=new ObjectMapper();
+        try {
+			System.out.println(objectMapper.writeValueAsString(ZkServer.serviceMap));
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
