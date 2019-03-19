@@ -12,4 +12,5 @@ import java.lang.annotation.Target;
 public @interface RPCURL {
 	String className();
 	String methodName();
+	String failClassName() default "";
 }

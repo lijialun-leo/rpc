@@ -21,17 +21,18 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 public class ZkServer implements ApplicationContextAware{
-	public static ConcurrentHashMap<String, ConcurrentHashMap<String,CopyOnWriteArrayList<String>>> serviceMap = new ConcurrentHashMap<String,ConcurrentHashMap<String,CopyOnWriteArrayList<String>>>();
+	public static ConcurrentHashMap<String, Map<String,Map<String,String>>> serviceMap = new ConcurrentHashMap<String,Map<String,Map<String,String>>>();
 	public static Map<String, String> map = new HashMap<String, String>();
 	public static ApplicationContext serverContext;
 	public static String ZookeeperIpHost;
 	public static String baseackage;
+	public static ZookeeperBase zk;
 	
 	public void start(){
 		RPC rpc = serverContext.getBean(RPC.class);
 		try {
 			//连接zk
-			ZookeeperBase zk = new ZookeeperBase(ZookeeperIpHost);
+			zk = new ZookeeperBase(ZookeeperIpHost);
 			//创建节点 获取当前项目路径
 			Enumeration<URL> urls =Thread.currentThread().getContextClassLoader().getResources(baseackage.replace(".", "/"));
 			while (urls.hasMoreElements()){
@@ -60,7 +61,7 @@ public class ZkServer implements ApplicationContextAware{
 	             String hostAddress = address.getHostAddress();//192.168.0.121     
 	             if(!zk.nodeExists("/RPCSERVER/"+entry.getKey()+"/"+hostAddress+":"+rpc.getPort())){
 	            	 //使用临时节点当zk断开连接的时候会自动消失
-	            	 zk.createNodeForTemporary("/RPCSERVER/"+entry.getKey()+"/"+hostAddress+":"+rpc.getPort(),hostAddress+":"+rpc.getPort());
+	            	 zk.createNodeForTemporary("/RPCSERVER/"+entry.getKey()+"/"+hostAddress+":"+rpc.getPort(),"true");
 	            	 System.out.println("/RPCSERVER/"+entry.getKey()+"/"+hostAddress+":"+rpc.getPort()+" 创建");
 	             }
 	        }

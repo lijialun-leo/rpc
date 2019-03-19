@@ -1,0 +1,234 @@
+2019-02-14 17:13:27 INFO  [Timer-1] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-14 17:13:27 INFO  [Timer-1] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Thu Feb 14 17:13:27 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-14 17:13:27 INFO  [Timer-1] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-14 17:13:27 INFO  [Timer-1] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 13 ms
+2019-02-14 17:38:29 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-14 17:38:29 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Thu Feb 14 17:38:29 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-14 17:38:29 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-14 17:38:29 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 18 ms
+2019-02-15 08:52:45 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-15 08:52:45 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Fri Feb 15 08:52:45 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-15 08:52:45 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-15 08:52:45 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 19 ms
+2019-02-15 08:56:45 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-15 08:56:45 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Fri Feb 15 08:56:45 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-15 08:56:45 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-15 08:56:45 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 16 ms
+2019-02-15 09:12:38 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-15 09:12:38 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Fri Feb 15 09:12:38 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-15 09:12:38 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-15 09:12:38 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 15 ms
+2019-02-15 09:13:20 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-15 09:13:20 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Fri Feb 15 09:13:20 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-15 09:13:20 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-15 09:13:20 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 15 ms
+2019-02-15 09:14:47 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-15 09:14:47 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Fri Feb 15 09:14:47 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-15 09:14:47 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-15 09:14:47 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 15 ms
+2019-02-15 09:15:52 INFO  [Timer-1] org.springframework.web.context.support.XmlWebApplicationContext.doClose(862) - Closing WebApplicationContext for namespace 'springmvc-servlet': startup date [Fri Feb 15 09:14:47 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 16:34:19 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-18 16:34:19 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 16:34:19 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 16:34:19 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-18 16:34:19 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 19 ms
+2019-02-18 16:36:43 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-18 16:36:43 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 16:36:43 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 16:36:43 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-18 16:36:43 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 19 ms
+2019-02-18 16:37:35 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-18 16:37:35 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 16:37:35 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 16:37:35 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-18 16:37:35 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 15 ms
+2019-02-18 16:38:01 INFO  [Timer-1] org.springframework.web.context.support.XmlWebApplicationContext.doClose(862) - Closing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 16:37:35 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 16:40:30 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-18 16:40:30 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 16:40:30 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 16:40:30 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-18 16:40:30 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 16 ms
+2019-02-18 16:43:10 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-18 16:43:10 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 16:43:10 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 16:43:10 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-18 16:43:10 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 15 ms
+2019-02-18 16:44:12 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-18 16:44:12 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 16:44:12 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 16:44:12 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-18 16:44:12 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 17 ms
+2019-02-18 16:44:30 INFO  [Timer-1] org.springframework.web.context.support.XmlWebApplicationContext.doClose(862) - Closing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 16:44:12 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 16:47:00 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-18 16:47:00 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 16:47:00 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 16:47:00 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-18 16:47:00 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 18 ms
+2019-02-18 16:57:29 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-18 16:57:29 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 16:57:29 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 16:57:29 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-18 16:57:29 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 15 ms
+2019-02-18 16:57:45 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-18 16:57:45 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 16:57:45 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 16:57:45 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-18 16:57:45 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 14 ms
+2019-02-18 17:01:15 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-18 17:01:15 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 17:01:15 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 17:01:15 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-18 17:01:15 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 17 ms
+2019-02-18 17:16:27 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-18 17:16:27 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 17:16:27 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 17:16:27 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-18 17:16:27 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 22 ms
+2019-02-18 17:18:50 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-18 17:18:50 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 17:18:50 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 17:18:50 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-18 17:18:50 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 21 ms
+2019-02-18 17:20:11 INFO  [Timer-1] org.springframework.web.context.support.XmlWebApplicationContext.doClose(862) - Closing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 17:18:50 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 17:20:13 INFO  [Timer-1] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-18 17:20:13 INFO  [Timer-1] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 17:20:13 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 17:20:13 INFO  [Timer-1] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-18 17:20:13 INFO  [Timer-1] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 21 ms
+2019-02-18 17:20:30 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-18 17:20:30 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 17:20:30 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 17:20:30 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-18 17:20:30 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 25 ms
+2019-02-18 17:21:31 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-18 17:21:31 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 17:21:31 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 17:21:31 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-18 17:21:31 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 31 ms
+2019-02-18 17:24:28 INFO  [Timer-1] org.springframework.web.context.support.XmlWebApplicationContext.doClose(862) - Closing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 17:21:31 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 17:24:29 INFO  [Timer-1] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-18 17:24:29 INFO  [Timer-1] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 17:24:29 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 17:24:29 INFO  [Timer-1] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-18 17:24:29 INFO  [Timer-1] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 22 ms
+2019-02-18 17:25:04 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-18 17:25:04 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 17:25:04 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 17:25:04 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-18 17:25:04 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 28 ms
+2019-02-18 17:25:22 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-18 17:25:22 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 17:25:22 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 17:25:22 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-18 17:25:22 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 24 ms
+2019-02-18 17:26:58 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-18 17:26:58 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Mon Feb 18 17:26:58 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-18 17:26:58 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-18 17:26:58 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 20 ms
+2019-02-19 14:52:35 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-19 14:52:35 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Tue Feb 19 14:52:35 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-19 14:52:35 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring-servlet.xml]
+2019-02-19 14:52:35 ERROR [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(497) - Context initialization failed
+org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from class path resource [spring-servlet.xml]; nested exception is java.io.FileNotFoundException: class path resource [spring-servlet.xml] cannot be opened because it does not exist
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:344)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:304)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:181)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:217)
+	at org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:188)
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:125)
+	at org.springframework.web.context.support.XmlWebApplicationContext.loadBeanDefinitions(XmlWebApplicationContext.java:94)
+	at org.springframework.context.support.AbstractRefreshableApplicationContext.refreshBeanFactory(AbstractRefreshableApplicationContext.java:129)
+	at org.springframework.context.support.AbstractApplicationContext.obtainFreshBeanFactory(AbstractApplicationContext.java:537)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:452)
+	at org.springframework.web.servlet.FrameworkServlet.configureAndRefreshWebApplicationContext(FrameworkServlet.java:663)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:629)
+	at org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:677)
+	at org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:548)
+	at org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:489)
+	at org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:136)
+	at javax.servlet.GenericServlet.init(GenericServlet.java:241)
+	at org.mortbay.jetty.servlet.ServletHolder.initServlet(ServletHolder.java:440)
+	at org.mortbay.jetty.servlet.ServletHolder.doStart(ServletHolder.java:263)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.servlet.ServletHandler.initialize(ServletHandler.java:736)
+	at org.mortbay.jetty.servlet.Context.startContext(Context.java:140)
+	at org.mortbay.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1282)
+	at org.mortbay.jetty.handler.ContextHandler.doStart(ContextHandler.java:518)
+	at org.mortbay.jetty.webapp.WebAppContext.doStart(WebAppContext.java:499)
+	at org.mortbay.jetty.plugin.Jetty6PluginWebAppContext.doStart(Jetty6PluginWebAppContext.java:115)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerCollection.doStart(HandlerCollection.java:152)
+	at org.mortbay.jetty.handler.ContextHandlerCollection.doStart(ContextHandlerCollection.java:156)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerCollection.doStart(HandlerCollection.java:152)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerWrapper.doStart(HandlerWrapper.java:130)
+	at org.mortbay.jetty.Server.doStart(Server.java:224)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.plugin.Jetty6PluginServer.start(Jetty6PluginServer.java:132)
+	at org.mortbay.jetty.plugin.AbstractJettyMojo.startJetty(AbstractJettyMojo.java:454)
+	at org.mortbay.jetty.plugin.AbstractJettyMojo.execute(AbstractJettyMojo.java:396)
+	at org.mortbay.jetty.plugin.AbstractJettyRunMojo.execute(AbstractJettyRunMojo.java:210)
+	at org.mortbay.jetty.plugin.Jetty6RunMojo.execute(Jetty6RunMojo.java:184)
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:132)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:208)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:153)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:145)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:116)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:80)
+	at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:51)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:120)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:355)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:155)
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:584)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:216)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:160)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:289)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:229)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:415)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:356)
+	at org.codehaus.classworlds.Launcher.main(Launcher.java:47)
+Caused by: java.io.FileNotFoundException: class path resource [spring-servlet.xml] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:172)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:330)
+	... 61 more
+2019-02-19 14:53:10 INFO  [Timer-1] org.apache.zookeeper.ZooKeeper.<init>(441) - Initiating client connection, connectString=172.16.12.35:2181 sessionTimeout=2000 watcher=main.java.zkServer.ZookeeperBase@c73637
+2019-02-19 14:53:10 INFO  [Timer-1-SendThread(172.16.12.35:2181)] org.apache.zookeeper.ClientCnxn.logStartConnect(1028) - Opening socket connection to server 172.16.12.35/172.16.12.35:2181. Will not attempt to authenticate using SASL (unknown error)
+2019-02-19 14:53:10 INFO  [Timer-1-SendThread(172.16.12.35:2181)] org.apache.zookeeper.ClientCnxn.primeConnection(878) - Socket connection established to 172.16.12.35/172.16.12.35:2181, initiating session
+2019-02-19 14:53:10 INFO  [Timer-1-SendThread(172.16.12.35:2181)] org.apache.zookeeper.ClientCnxn.onConnected(1302) - Session establishment complete on server 172.16.12.35/172.16.12.35:2181, sessionid = 0x1000161f4650001, negotiated timeout = 4000
+2019-02-19 14:53:11 INFO  [Timer-1] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-19 14:53:11 INFO  [Timer-1] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Tue Feb 19 14:53:11 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-19 14:53:11 INFO  [Timer-1] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring.xml]
+2019-02-19 14:53:11 INFO  [Timer-1] org.springframework.cache.ehcache.EhCacheManagerFactoryBean.afterPropertiesSet(129) - Initializing EhCache CacheManager
+2019-02-19 14:53:11 INFO  [Timer-1] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 60 ms
+2019-02-19 14:53:30 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-19 14:53:30 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Tue Feb 19 14:53:30 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-19 14:53:30 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring.xml]
+2019-02-19 14:53:31 INFO  [main] org.springframework.cache.ehcache.EhCacheManagerFactoryBean.afterPropertiesSet(129) - Initializing EhCache CacheManager
+2019-02-19 14:53:31 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 58 ms
+2019-02-19 15:08:50 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-19 15:08:50 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Tue Feb 19 15:08:50 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-19 15:08:50 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring.xml]
+2019-02-19 15:08:50 INFO  [main] org.springframework.cache.ehcache.EhCacheManagerFactoryBean.afterPropertiesSet(129) - Initializing EhCache CacheManager
+2019-02-19 15:08:50 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 65 ms
+2019-02-19 15:23:31 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-19 15:23:31 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Tue Feb 19 15:23:31 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-19 15:23:31 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring.xml]
+2019-02-19 15:23:31 INFO  [main] org.springframework.cache.ehcache.EhCacheManagerFactoryBean.afterPropertiesSet(129) - Initializing EhCache CacheManager
+2019-02-19 15:23:31 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 65 ms
+2019-02-19 16:06:55 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-19 16:06:55 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Tue Feb 19 16:06:55 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-19 16:06:55 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring.xml]
+2019-02-19 16:06:55 INFO  [main] org.springframework.cache.ehcache.EhCacheManagerFactoryBean.afterPropertiesSet(129) - Initializing EhCache CacheManager
+2019-02-19 16:06:55 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 61 ms
+2019-02-19 16:09:07 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-19 16:09:07 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Tue Feb 19 16:09:07 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-19 16:09:07 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring.xml]
+2019-02-19 16:09:07 INFO  [main] org.springframework.cache.ehcache.EhCacheManagerFactoryBean.afterPropertiesSet(129) - Initializing EhCache CacheManager
+2019-02-19 16:09:07 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 57 ms
+2019-02-19 16:10:43 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-19 16:10:43 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Tue Feb 19 16:10:43 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-19 16:10:43 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring.xml]
+2019-02-19 16:10:44 INFO  [main] org.springframework.cache.ehcache.EhCacheManagerFactoryBean.afterPropertiesSet(129) - Initializing EhCache CacheManager
+2019-02-19 16:10:44 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 57 ms
+2019-02-19 16:13:08 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-19 16:13:08 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Tue Feb 19 16:13:08 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-19 16:13:08 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring.xml]
+2019-02-19 16:13:08 INFO  [main] org.springframework.cache.ehcache.EhCacheManagerFactoryBean.afterPropertiesSet(129) - Initializing EhCache CacheManager
+2019-02-19 16:13:08 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 57 ms
+2019-02-19 16:20:45 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-19 16:20:45 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Tue Feb 19 16:20:45 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-19 16:20:45 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring.xml]
+2019-02-19 16:20:45 INFO  [main] org.springframework.cache.ehcache.EhCacheManagerFactoryBean.afterPropertiesSet(129) - Initializing EhCache CacheManager
+2019-02-19 16:20:45 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 58 ms
+2019-02-19 16:25:41 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(484) - FrameworkServlet 'springmvc': initialization started
+2019-02-19 16:25:41 INFO  [main] org.springframework.web.context.support.XmlWebApplicationContext.prepareRefresh(510) - Refreshing WebApplicationContext for namespace 'springmvc-servlet': startup date [Tue Feb 19 16:25:41 GMT+08:00 2019]; parent: Root WebApplicationContext
+2019-02-19 16:25:41 INFO  [main] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(317) - Loading XML bean definitions from class path resource [spring.xml]
+2019-02-19 16:25:41 INFO  [main] org.springframework.cache.ehcache.EhCacheManagerFactoryBean.afterPropertiesSet(129) - Initializing EhCache CacheManager
+2019-02-19 16:25:41 INFO  [main] org.springframework.web.servlet.DispatcherServlet.initServletBean(503) - FrameworkServlet 'springmvc': initialization completed in 58 ms

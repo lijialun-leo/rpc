@@ -48,50 +48,59 @@ public class ZookeeperBase implements Watcher {
 				e.printStackTrace();
 			}
 			countDownLatch.countDown();
-		}/*else if(EventType.NodeCreated == eventType){//监听到传教节点
+		}else if(EventType.NodeChildrenChanged == eventType){//某节点的其子节点有变化
+			System.out.println(path);
 			String paths[] = path.split("/");
-			Map<String,List<Map<String,String>>> childMap = new HashMap<String, List<Map<String,String>>>();
-			List<Map<String,String>> childList = new ArrayList<Map<String,String>>();
-			if(paths.length == 5){
-				childMap = ZkServer.serviceMap.get(paths[3]);
-				try {
-					childList = childMap.get(new String(getData("/"+paths[2]+"/"+paths[3])));
-					Map<String,String> map = new HashMap<String, String>();
-					map.put(paths[4], new String(getData("/"+paths[2]+"/"+paths[3]+"/"+paths[4])));
-					childList.add(map);
-					System.out.println("服务上线"+path);
-				} catch (KeeperException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}else{
-				try {
-					childMap.put(new String(getData("/"+paths[2]+"/"+paths[3])), childList);
-					ZkServer.serviceMap.put(paths[3], childMap);
-				} catch (KeeperException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
-		}else if(EventType.NodeDeleted == eventType){
-			String paths[] = path.split("/");
-			Map<String,List<Map<String,String>>> childMap = ZkServer.serviceMap.get(paths[3]);
+			Map<String,Map<String,String>> Map = ZkServer.serviceMap.get(paths[3]);
 			try {
-				List<Map<String,String>> childList = childMap.get(new String(getData("/"+paths[2]+"/"+paths[3])));
-				Iterator<Map<String,String>> iterator = childList.iterator();
-				while (iterator.hasNext()) {
-					Map<String,String> map = (Map<String,String>) iterator.next();
-					if(map.containsKey(paths[4])){
-						childList.remove(map);
-						System.out.println("服务下线"+path);
+				if(Map != null){
+					//目前列表中数据
+					Map<String,String> childMap = Map.get(new String(getData("/"+paths[2]+"/"+paths[3])));
+					//节点数据 注册监听
+					List<String> childrens = getChilds("/"+paths[2]+"/"+paths[3]);
+					if(childMap.size() == childrens.size()){
+						/*for (String str : childrens) {
+							Iterator<Map.Entry<String, String>> it = childMap.entrySet().iterator();
+							while (it.hasNext()) {
+					             Map.Entry<String, String> entry = it.next();
+					             if(str == entry.getKey()){
+					            	 String isTrue = new String(getData("/"+paths[2]+"/"+paths[3]+"/"+str));
+					            	 if(!isTrue.equals(entry.getValue())){
+					            		 entry.setValue("false");
+					            		 System.out.println("/"+paths[2]+"/"+paths[3]+"/"+str+"服务降级");
+					            	 }
+					             }
+					        }
+						}*/
+					}else{
+						//上线处理
+						if(childrens.size() !=0 && childrens.size() > childMap.size()){
+							for (String str : childrens) {
+								if(!childMap.containsKey(str)){
+									childMap.put(str, "true");
+									System.out.println("服务上线"+path+"/"+str);
+									getDataByWatch("/"+paths[2]+"/"+paths[3]+"/"+str);//注册watch
+								}
+							}
+						}
+						//下线处理
+						if(childMap.size() != 0 && childMap.size() > childrens.size()){
+							Iterator<Map.Entry<String, String>> it = childMap.entrySet().iterator();
+							while (it.hasNext()) {
+								Map.Entry<String, String> entry = it.next();
+								if(!childrens.contains(entry.getKey())){
+									childMap.remove(entry);
+									System.out.println("服务下线"+path+"/"+entry.getKey());
+								}
+							}
+						}
 					}
+				}else{
+					Map<String,Map<String,String>> map = new HashMap<String, Map<String,String>>();
+					Map<String,String> childMap = new HashMap<String, String>();
+					map.put(new String(getData("/"+paths[2]+"/"+paths[3])), childMap);
+					ZkServer.serviceMap.put(paths[3], map);
+					List<String> childrens = getChilds("/"+paths[2]+"/"+paths[3]);//注册监听
 				}
 			} catch (KeeperException e) {
 				// TODO Auto-generated catch block
@@ -100,38 +109,24 @@ public class ZookeeperBase implements Watcher {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-		}*/else if(EventType.NodeChildrenChanged == eventType){//某节点的其子节点有变化
+		}else if(EventType.NodeDataChanged == eventType){//某节点的数据发生改变 节点注册
+			System.out.println(path);
 			String paths[] = path.split("/");
-			ConcurrentHashMap<String,CopyOnWriteArrayList<String>> Map = ZkServer.serviceMap.get(paths[3]);
+			Map<String,Map<String,String>> Map = ZkServer.serviceMap.get(paths[3]);
+			Map<String, String> childMap;
 			try {
-				//目前列表中数据
-				CopyOnWriteArrayList<String> childList = Map.get(new String(getData("/"+paths[2]+"/"+paths[3])));
-				//节点数据
-				List<String> childrens = getChilds("/"+paths[2]+"/"+paths[3]);
-				//上线处理
-				if(childrens.size() !=0){
-					for (String child : childrens) {
-						if(!childList.contains(child)){
-							childList.add(child);
-							System.out.println("服务上线"+path+"/"+child);
-						}
-						
-					}
-				}
-				//下线处理
-				if(childList.size() != 0){
-					for (String str : childList) {
-						if(childrens.size() !=0){
-							for (String child : childrens) {
-								if(!child.equals(str)){
-									childList.remove(str);
-									System.out.println("服务下线"+path+"/"+child);
-								}
-							}
+				childMap = Map.get(new String(getData("/"+paths[2]+"/"+paths[3])));
+				Iterator<Map.Entry<String, String>> it = childMap.entrySet().iterator();
+				while (it.hasNext()) {
+					Map.Entry<String, String> entry = it.next();
+					if(paths[4].equals(entry.getKey())){
+						String isTrue = new String(getDataByWatch("/"+paths[2]+"/"+paths[3]+"/"+paths[4]));
+						if(isTrue.equals("false")){
+							entry.setValue("false");
+							System.out.println("/"+paths[2]+"/"+paths[3]+"/"+paths[4]+"降级");
 						}else{
-							childList.remove(str);
-							System.out.println("服务下线"+path);
+							entry.setValue("true");
+							System.out.println("/"+paths[2]+"/"+paths[3]+"/"+paths[4]+"升级");
 						}
 					}
 				}
@@ -213,6 +208,17 @@ public class ZookeeperBase implements Watcher {
 			return null;
 		}
 	}
+	
+	//获取node内容 注册节点
+	public String getDataByWatch(String path) throws KeeperException, InterruptedException{
+		path = this.pathChange(path);
+		if(this.nodeExists(path)) {
+			 return new String(this.zookeeper.getData(path, true, null));
+		}else{
+			return null;
+		}
+	}
+	
 	//设置node内容
 	public Boolean setData(String path, String data) throws KeeperException, InterruptedException{
 		path = this.pathChange(path);
@@ -286,13 +292,15 @@ public class ZookeeperBase implements Watcher {
         List<String> children = getChilds(path);
         if(children.size() !=0){
         	for (String pathCd : children) {
-        		ConcurrentHashMap<String,CopyOnWriteArrayList<String>> parentMap = new ConcurrentHashMap<String, CopyOnWriteArrayList<String>>();
-        		CopyOnWriteArrayList<String> childList = new CopyOnWriteArrayList<String>();
+        		Map<String,Map<String,String>> parentMap = new HashMap<String, Map<String,String>>();
+        		Map<String,String> childList = new HashMap<String,String>();
         		List<String> childrens = getChilds(path+"/"+pathCd);
         		String parentContext =  new String(getData(path+"/"+pathCd));
         		if(childrens.size() !=0){
         			for (String child : childrens) {
-        				childList.add(child);
+        				//注册节点watch 用于服务降级用
+        				String childContext =  new String(getDataByWatch(path+"/"+pathCd+"/"+child));
+        				childList.put(child, childContext);
         			}
         		}
         		parentMap.put(parentContext, childList);
