@@ -13,8 +13,10 @@ main\java\zkcontroller\BaseController.class
 main\java\client\RPCRequestNet$2.class
 main\java\server\InvokeServiceUtil.class
 main\java\zkServer\ZookeeperBase.class
+main\java\Quarze\JobEntity.class
 main\java\pojo\Zkserver.class
 main\java\annotation\RPCClient.class
+main\java\Quarze\QuartzService.class
 main\java\fail\FailBack.class
 main\java\zkcontroller\ZkserverController.class
 main\java\util\StringUtil.class
@@ -22,6 +24,9 @@ main\java\client\RPCRequestHandler.class
 main\java\core\RPC$1.class
 main\java\client\RPCRequestNet.class
 main\java\core\RPC.class
+main\java\zkServer\ZkServer$TimerTaskBean.class
+main\java\Quarze\QuartzServiceImpl.class
+main\java\Quarze\ItemTask.class
 main\java\annotation\RPCServer.class
 main\java\server\RPCResponse.class
 main\java\server\RPCResponseHandler.class
