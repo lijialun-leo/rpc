@@ -56,20 +56,15 @@ public class RPCProxyHandler<T> implements InvocationHandler {
              String ipAndHost = RoundRobin.getServer(list);//后期需要添加负载均衡策略(已有轮询)
              String isTrue = serverList.get(ipAndHost);
              if(isTrue.equals("true")){
-            	 /*if(requestTimes.intValue() >10){
-            		 FailBack failBack = (FailBack) ZkServer.serverContext.getBean(url.failClassName());
-                	 return failBack.failBack();
-            	 }else{*/
             		 String str[] = ipAndHost.split(":");
             		 request.setClassName(className);
             		 request.setMethodName(url.methodName());
             		 request.setParameters(args);
             		 requestLockMap.put(request.getRequestID(),request);
-            		 RPCRequestNet.connect(str[0], Integer.parseInt(str[1])).send(request);
+            		 RPCRequestNet.getRPCRequestNet().connect(str[0], Integer.parseInt(str[1]),request);
             		 requestLockMap.remove(request.getRequestID());
             		 System.out.println("调用次数"+requestTimes.intValue());
             		 return request.getResult();
-            	 /*}*/
              }else{
             	 FailBack failBack = (FailBack) ZkServer.serverContext.getBean(url.failClassName());
             	 return failBack.failBack();

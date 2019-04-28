@@ -22,7 +22,7 @@ public class InvokeServiceUtil {
      */
     public static Object invoke(RPCRequest request){
         Object result=null;
-        if(map.get(request.getClassName()).intValue() <5){
+        if(map.get(request.getClassName()).intValue() <1000){
         	try {
         		Class implClass=Class.forName(request.getClassName());
         		Object[] parameters=request.getParameters();

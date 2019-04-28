@@ -2,6 +2,7 @@ package main.java.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
@@ -16,8 +17,8 @@ public class RPCResponseNet {
 
     public static void connect(int port){
         //netty主从线程模型(建立2个线程组) 一个用于网络读写   一个用于和客户的进行连接 
-        EventLoopGroup bossGroup=new NioEventLoopGroup();
-        EventLoopGroup workerGroup=new NioEventLoopGroup();
+        final EventLoopGroup bossGroup=new NioEventLoopGroup();
+        final EventLoopGroup workerGroup=new NioEventLoopGroup();
         try {
             //启动辅助类 用于配置各种参数
             ServerBootstrap b=new ServerBootstrap();
@@ -35,14 +36,23 @@ public class RPCResponseNet {
             //绑定端口 同步等待成功
             ChannelFuture future=b.bind(port).sync();
             System.out.println("netty server start on port:"+port);
-            //同步等待服务端监听端口关闭
-            future.channel().closeFuture().sync();
+            //采用非同步方法退出netty 通过异步的方法不会被阻塞
+            future.channel().closeFuture().addListener(new ChannelFutureListener() {
+				@Override
+				public void operationComplete(ChannelFuture future) throws Exception {
+					// TODO Auto-generated method stub
+					//释放资源退出
+					System.out.println(future.channel().toString()+" 链路关闭");
+		            bossGroup.shutdownGracefully();
+		            workerGroup.shutdownGracefully();
+				}
+			});
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
             //释放资源退出
-            bossGroup.shutdownGracefully();
-            workerGroup.shutdownGracefully();
+            //bossGroup.shutdownGracefully();
+            //workerGroup.shutdownGracefully();
         }
     }
 
