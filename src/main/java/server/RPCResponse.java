@@ -1,8 +1,11 @@
 package main.java.server;
 
+import org.msgpack.annotation.Message;
+
+@Message
 public class RPCResponse {
     private String requestID;
-    private Object result;
+    private String result;
 
     public String getRequestID() {
         return requestID;
@@ -12,11 +15,11 @@ public class RPCResponse {
         this.requestID = requestID;
     }
 
-    public Object getResult() {
+    public String getResult() {
         return result;
     }
 
-    public void setResult(Object result) {
+    public void setResult(String result) {
         this.result = result;
     }
 }

@@ -1,11 +1,17 @@
 	package main.java.server;
 
 
+import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import main.java.client.RPCRequest;
 import main.java.util.StringUtil;
@@ -14,14 +20,15 @@ import main.java.zkServer.ZkServer;
 public class InvokeServiceUtil {
 	
 	public static Map<String,Integer> map = new ConcurrentHashMap<String, Integer>();
-
+	private static ObjectMapper objectMapper;
     /**
      * 反射调用相应实现类并结果
      * @param request
      * @return
      */
-    public static Object invoke(RPCRequest request){
-        Object result=null;
+    public static String invoke(RPCRequest request){
+        String result=null;
+        Object obj = null;
         if(map.get(request.getClassName()).intValue() <1000){
         	try {
         		Class implClass=Class.forName(request.getClassName());
@@ -34,7 +41,16 @@ public class InvokeServiceUtil {
         		Method method=implClass.getDeclaredMethod(request.getMethodName(),parameterTypes);
         		//获取到注册的服务bean
         		Object implObj=ZkServer.serverContext.getBean(StringUtil.toLowerCaseFirstOne(implClass.getSimpleName()));
-        		result=method.invoke(implObj,parameters);
+        		obj=method.invoke(implObj,parameters);
+        		Type type = method.getGenericReturnType();
+        		//Class typeClass = Class.forName(type.toString().split(" ")[1].trim());
+        		//基础类型 
+        		if(!type.toString().split(" ")[1].trim().startsWith("java.lang.")){
+        			objectMapper = new ObjectMapper();
+        			result = objectMapper.writeValueAsString(obj);
+        		}else{
+        			result = obj.toString();
+        		}
         		map.put(request.getClassName(), (map.get(request.getClassName()).intValue()+1));
         	} catch (ClassNotFoundException e) {
         		e.printStackTrace();
@@ -44,7 +60,10 @@ public class InvokeServiceUtil {
         		e.printStackTrace();
         	} catch (InvocationTargetException e) {
         		e.printStackTrace();
-        	}
+        	} catch (JsonProcessingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }else{
         	result = "服务已暂停";
         }

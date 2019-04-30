@@ -9,9 +9,8 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.LineBasedFrameDecoder;
-import io.netty.handler.codec.string.StringDecoder;
-import main.java.core.RPC;
+import main.java.Decode.ServerMsgPackDecode;
+import main.java.Decode.ServerMsgPackEncode;
 
 public class RPCResponseNet {
 
@@ -28,8 +27,10 @@ public class RPCResponseNet {
                     .childHandler(new ChannelInitializer<SocketChannel>(){
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            socketChannel.pipeline().addLast(new LineBasedFrameDecoder(8192));//以换行符为结束位置进行分包 
-                            socketChannel.pipeline().addLast(new StringDecoder());//将接收到的对象转为字符串
+                            //socketChannel.pipeline().addLast(new LineBasedFrameDecoder(8192));//以换行符为结束位置进行分包 
+                            //socketChannel.pipeline().addLast(new StringDecoder());//将接收到的对象转为字符串
+                            socketChannel.pipeline().addLast(new ServerMsgPackEncode());//编码
+                            socketChannel.pipeline().addLast(new ServerMsgPackDecode());//解码
                             socketChannel.pipeline().addLast(new RPCResponseHandler());//处理类
                         }
                     });

@@ -2,8 +2,13 @@ package main.java.client;
 
 
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,6 +18,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import main.java.annotation.RPCURL;
 import main.java.balancing.RoundRobin;
@@ -36,7 +43,7 @@ public class RPCProxyHandler<T> implements InvocationHandler {
     }*/
     
     @Override
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    public Object invoke(Object proxy, Method method, Object[] obj) throws Throwable {
         RPCRequest request=new RPCRequest();
         request.setRequestID(buildRequestID(method.getName()));
         //获取调用方法的ClassName和MethodName
@@ -56,15 +63,28 @@ public class RPCProxyHandler<T> implements InvocationHandler {
              String ipAndHost = RoundRobin.getServer(list);//后期需要添加负载均衡策略(已有轮询)
              String isTrue = serverList.get(ipAndHost);
              if(isTrue.equals("true")){
+	            	 String [] strList = new String[obj.length];
+		            	 for (int i = 0; i < obj.length; i++) {
+		            		 strList[i] = obj[i].toString();
+	            	 }
             		 String str[] = ipAndHost.split(":");
             		 request.setClassName(className);
             		 request.setMethodName(url.methodName());
-            		 request.setParameters(args);
+            		 request.setParameters(strList);
             		 requestLockMap.put(request.getRequestID(),request);
             		 RPCRequestNet.getRPCRequestNet().connect(str[0], Integer.parseInt(str[1]),request);
             		 requestLockMap.remove(request.getRequestID());
             		 System.out.println("调用次数"+requestTimes.intValue());
-            		 return request.getResult();
+            		 Type returnType =  method.getGenericReturnType();
+            		 Class typeClass = Class.forName(returnType.toString().split(" ")[1].trim());
+            		 if(!returnType.toString().split(" ")[1].trim().startsWith("java.lang.")){
+            			 ObjectMapper objectMapper = new ObjectMapper();
+            			 objectMapper.readValue(request.getResult(), typeClass);
+            			 return objectMapper.readValue(request.getResult(), typeClass);
+             		}else{
+             			Constructor constructor = typeClass.getConstructor(new Class[]{String.class});
+             			return constructor.newInstance(request.getResult());
+             		}
              }else{
             	 FailBack failBack = (FailBack) ZkServer.serverContext.getBean(url.failClassName());
             	 return failBack.failBack();
