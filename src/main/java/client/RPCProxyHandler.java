@@ -74,7 +74,7 @@ public class RPCProxyHandler<T> implements InvocationHandler {
             		 requestLockMap.put(request.getRequestID(),request);
             		 RPCRequestNet.getRPCRequestNet().connect(str[0], Integer.parseInt(str[1]),request);
             		 requestLockMap.remove(request.getRequestID());
-            		 System.out.println("调用次数"+requestTimes.intValue());
+            		 //System.out.println("调用次数"+requestTimes.intValue());
             		 Type returnType =  method.getGenericReturnType();
             		 Class typeClass = Class.forName(returnType.toString().split(" ")[1].trim());
             		 if(!returnType.toString().split(" ")[1].trim().startsWith("java.lang.")){

@@ -10,6 +10,8 @@ import io.netty.channel.pool.ChannelPoolMap;
 import io.netty.channel.pool.FixedChannelPool;
 import io.netty.channel.pool.SimpleChannelPool;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
+import io.netty.handler.codec.LengthFieldPrepender;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.FutureListener;
 
@@ -56,6 +58,8 @@ public class RPCRequestNet {
 						System.out.println("channelCreated. Channel ID: " + ch.id());
 						//ch.pipeline().addLast(new LineBasedFrameDecoder(8192));//以换行符分包
 						//ch.pipeline().addLast(new StringDecoder());//将接收到的对象转为字符串
+						ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(65535, 0, 2,0,2));
+						ch.pipeline().addLast(new LengthFieldPrepender(2));
 						ch.pipeline().addLast(new ClientMsgPackEncode());//编码
 						ch.pipeline().addLast(new ClientMsgPackDecode());//解码
 						ch.pipeline().addLast(new RPCRequestHandler());//添加相应回调处理和编解码器
@@ -79,13 +83,6 @@ public class RPCRequestNet {
 			@Override
 			public void operationComplete(Future<Channel> arg0) throws Exception {
 				  if (f.isSuccess()) {
-					  /*String requestJson= null;
-			          try {
-			              requestJson = RPC.requestEncode(request);
-			          } catch (JsonProcessingException e) {
-			              e.printStackTrace();
-			          }
-				      final ByteBuf requestBuf= Unpooled.copiedBuffer(requestJson.getBytes());*/
 				      Channel ch = f.getNow();
 					  ch.writeAndFlush(request);
 					  pool.release(ch);
@@ -103,30 +100,4 @@ public class RPCRequestNet {
 			}
         }
     }
-
-    //向实现端发送请求
-    /*public void send(RPCRequest request){
-        String requestJson= null;
-        try {
-            requestJson = RPC.requestEncode(request);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        ByteBuf requestBuf= Unpooled.copiedBuffer(requestJson.getBytes());
-        //发送请求给服务段
-        RPCRequestHandler.channelCtx.writeAndFlush(requestBuf);
-        System.out.println("调用"+request.getRequestID()+"已发送");
-        synchronized (request) {
-        	//因为异步 所以不阻塞的话 该线程获取不到返回值
-            //放弃对象锁 并阻塞等待notify
-            try {
-				request.wait();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-        }
-    }*/
-
-
 }
