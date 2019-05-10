@@ -11,6 +11,8 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.LengthFieldPrepender;
+import io.netty.util.concurrent.DefaultEventExecutorGroup;
+import io.netty.util.concurrent.EventExecutorGroup;
 import main.java.Decode.ServerMsgPackDecode;
 import main.java.Decode.ServerMsgPackEncode;
 
@@ -18,8 +20,9 @@ public class RPCResponseNet {
 
     public static void connect(int port){
         //netty主从线程模型(建立2个线程组) 一个用于网络读写   一个用于和客户的进行连接 
-        final EventLoopGroup bossGroup=new NioEventLoopGroup();
-        final EventLoopGroup workerGroup=new NioEventLoopGroup();
+        final EventLoopGroup bossGroup=new NioEventLoopGroup(2);
+        final EventLoopGroup workerGroup=new NioEventLoopGroup(10);
+        //final EventExecutorGroup businessGroup = new DefaultEventExecutorGroup(10);
         try {
             //启动辅助类 用于配置各种参数
             ServerBootstrap b=new ServerBootstrap();

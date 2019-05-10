@@ -15,7 +15,7 @@ public class RoundRobin {
             server = list.get(pos);
             pos ++;
         }
- 
+        System.out.println("server :" + server);
         return server;
 	 }
 

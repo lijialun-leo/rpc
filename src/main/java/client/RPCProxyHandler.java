@@ -20,6 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 
 import main.java.annotation.RPCURL;
 import main.java.balancing.RoundRobin;
@@ -77,14 +78,16 @@ public class RPCProxyHandler<T> implements InvocationHandler {
             		 //System.out.println("调用次数"+requestTimes.intValue());
             		 Type returnType =  method.getGenericReturnType();
             		 Class typeClass = Class.forName(returnType.toString().split(" ")[1].trim());
-            		 if(!returnType.toString().split(" ")[1].trim().startsWith("java.lang.")){
+            		 Gson gson = new Gson();
+            		 return gson.fromJson(request.getResult(), typeClass);
+            		 /*if(!returnType.toString().split(" ")[1].trim().startsWith("java.lang.")){
             			 ObjectMapper objectMapper = new ObjectMapper();
             			 objectMapper.readValue(request.getResult(), typeClass);
             			 return objectMapper.readValue(request.getResult(), typeClass);
              		}else{
              			Constructor constructor = typeClass.getConstructor(new Class[]{String.class});
              			return constructor.newInstance(request.getResult());
-             		}
+             		}*/
              }else{
             	 FailBack failBack = (FailBack) ZkServer.serverContext.getBean(url.failClassName());
             	 return failBack.failBack();

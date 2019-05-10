@@ -49,7 +49,6 @@ public class ZookeeperBase implements Watcher {
 			}
 			countDownLatch.countDown();
 		}else if(EventType.NodeChildrenChanged == eventType){//某节点的其子节点有变化
-			System.out.println(path);
 			String paths[] = path.split("/");
 			Map<String,Map<String,String>> Map = ZkServer.serviceMap.get(paths[3]);
 			try {
@@ -59,19 +58,7 @@ public class ZookeeperBase implements Watcher {
 					//节点数据 注册监听
 					List<String> childrens = getChilds("/"+paths[2]+"/"+paths[3]);
 					if(childMap.size() == childrens.size()){
-						/*for (String str : childrens) {
-							Iterator<Map.Entry<String, String>> it = childMap.entrySet().iterator();
-							while (it.hasNext()) {
-					             Map.Entry<String, String> entry = it.next();
-					             if(str == entry.getKey()){
-					            	 String isTrue = new String(getData("/"+paths[2]+"/"+paths[3]+"/"+str));
-					            	 if(!isTrue.equals(entry.getValue())){
-					            		 entry.setValue("false");
-					            		 System.out.println("/"+paths[2]+"/"+paths[3]+"/"+str+"服务降级");
-					            	 }
-					             }
-					        }
-						}*/
+						System.out.println(childrens.size());
 					}else{
 						//上线处理
 						if(childrens.size() !=0 && childrens.size() > childMap.size()){
@@ -89,7 +76,7 @@ public class ZookeeperBase implements Watcher {
 							while (it.hasNext()) {
 								Map.Entry<String, String> entry = it.next();
 								if(!childrens.contains(entry.getKey())){
-									childMap.remove(entry);
+									it.remove();
 									System.out.println("服务下线"+path+"/"+entry.getKey());
 								}
 							}
