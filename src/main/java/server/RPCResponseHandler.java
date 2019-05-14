@@ -18,26 +18,27 @@ public class RPCResponseHandler extends ChannelInboundHandlerAdapter{
 	//final EventExecutorGroup businessGroup = new DefaultEventExecutorGroup(10);
     @Override
     public void channelRead(final ChannelHandlerContext ctx, final Object msg) throws IOException {
-    	executorService.execute(new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("服务端接收到请求");
-		    	RPCRequest request = (RPCRequest) msg;
-		    	//业务处理 假设每次处理需要1S
-		    	try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		        String result=InvokeServiceUtil.invoke(request);
-		        RPCResponse response=new RPCResponse();
-		        response.setRequestID(request.getRequestID());
-		        response.setResult(result);
-		        ctx.writeAndFlush(response);
-				
-			}
-		});
+    	System.out.println("服务端接收到请求");
+    	RPCRequest request = (RPCRequest) msg;
+    	//业务处理 假设每次处理需要1S
+    	try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        String result=InvokeServiceUtil.invoke(request);
+        RPCResponse response=new RPCResponse();
+        response.setRequestID(request.getRequestID());
+        response.setResult(result);
+        ctx.writeAndFlush(response);
+    	
+//    	executorService.execute(new Runnable() {
+//			@Override
+//			public void run() {
+//				
+//			}
+//		});
     }
 
     @Override

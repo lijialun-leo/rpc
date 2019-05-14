@@ -23,8 +23,6 @@ public class RPCRequestHandler extends ChannelInboundHandlerAdapter  {
             RPCRequest request= (RPCRequest) RPCProxyHandler.requestLockMap.get(response.getRequestID());
             request.setResult(response.getResult());
             request.notifyAll();
-        }
-        
+        }  
     }
-    
 }

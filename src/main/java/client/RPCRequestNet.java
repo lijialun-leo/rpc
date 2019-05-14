@@ -2,9 +2,11 @@ package main.java.client;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.pool.AbstractChannelPoolMap;
+import io.netty.channel.pool.ChannelHealthChecker;
 import io.netty.channel.pool.ChannelPoolHandler;
 import io.netty.channel.pool.ChannelPoolMap;
 import io.netty.channel.pool.FixedChannelPool;
@@ -50,7 +52,7 @@ public class RPCRequestNet {
 					//使用完channel需要释放才能放入连接池
 					@Override
 					public void channelReleased(Channel ch) throws Exception {
-						// TODO Auto-generated method stub
+						System.out.println("channelReleased. Channel ID: " + ch.id());
 					}
 					//当链接创建的时候添加channelhandler，只有当channel不足时会创建，但不会超过限制的最大channel数
 					@Override
@@ -67,10 +69,11 @@ public class RPCRequestNet {
 					//获取连接池中的channel
 					@Override
 					public void channelAcquired(Channel ch) throws Exception {
-						// TODO Auto-generated method stub
+						 System.out.println("channelAcquired. Channel ID: " + ch.id());
 					}
 				};
-				return new FixedChannelPool(b.remoteAddress(inetSocketAddress), handler, 5); //单个服务端连接池大小
+				//return new FixedChannelPool(b.remoteAddress(inetSocketAddress), handler, 5);
+				return new FixedChannelPool(b.remoteAddress(inetSocketAddress), handler, ChannelHealthChecker.ACTIVE, null, -1L, 5, 2147483647, true, false); //单个服务端连接池大小
 			}
 		};
     }
@@ -84,7 +87,8 @@ public class RPCRequestNet {
 			public void operationComplete(Future<Channel> arg0) throws Exception {
 				  if (f.isSuccess()) {
 				      Channel ch = f.getNow();
-					  ch.writeAndFlush(request);
+				      ch.writeAndFlush(request);
+					  System.out.println("发送请求");
 					  pool.release(ch);
 				  }
 			}
